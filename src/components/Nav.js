@@ -1,31 +1,38 @@
 //import styled from "styled-components";
 
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  // IndexRoute,
-} from "react-router-dom";
-// const Nav = styled.nav``;
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const Navwrapper = styled.nav`
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    li {
+      flex: 1;
+      border: 2px solid pink;
+      padding: 10px 0;
+    }
+  }
+`;
 
 function Nav() {
   return (
-    <nav>
+    <Navwrapper>
       <ul>
         <li>
-          <Link to="/tags">标签1</Link>
+          <Link to="/tags">标签</Link>
         </li>
         <li>
-          <Link to="/money">记账1</Link>
+          <Link to="/money">记账</Link>
         </li>
         <li>
-          <Link to="/statstics">统计1</Link>
+          <Link to="/statistics">统计</Link>
         </li>
       </ul>
-    </nav>
+    </Navwrapper>
   );
 }
 
