@@ -1,6 +1,7 @@
 import React from "react";
 import Tags from "./Tags";
 import Money from "./Money";
+//import Money1 from "./Money1";
 import Statistics from "./Statistics";
 import Notfound from "./Notfound";
 import Nav from "components/Nav";

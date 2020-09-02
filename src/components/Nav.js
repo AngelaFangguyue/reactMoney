@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Navwrapper = styled.nav`
+  line-height: 24px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
   ul {
     display: flex;
     align-items: center;
