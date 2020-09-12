@@ -1,43 +1,57 @@
 import React from "react";
 import "./App.scss";
 import logo192 from "./logo192.png";
-import logo from "./logo.svg";
-import logo1 from "./test/logo1.png";
-import style1 from "./style1.module.scss";
-import c from "./test1/Test1.js";
+// import logo from "./logo.svg";
+import x from "./logo.svg";
 
-import styled from "styled-components";
-import Box from "components/Box";
+import logo1 from "./test/logo1.png";
+// import style1 from "./style1.module.scss";
+// import c from "./test1/Test1.js";
+
+// import styled from "styled-components";
+// import Box from "components/Box";
 import Main from "views/Main";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  useRouteMatch,
-  useParams,
-} from "react-router-dom";
+import Main1 from "views/Main1";
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link,
+//   Redirect,
+//   useRouteMatch,
+//   useParams,
+// } from "react-router-dom";
 //import Nav from "components/Nav";
 // console.log("aa:", logo1);
-// console.log("aa:", logo);
-const ButtonGrey = styled.button`
-  color: red;
-  &:hover {
-    color: green;
-  }
-`;
+//console.log("aa:", logo);
+// const ButtonGrey = styled.button`
+//   color: red;
+//   &:hover {
+//     color: green;
+//   }
+// `;
+
+console.log("app:x", x);
 
 function App() {
+  return <Main1></Main1>;
+  // eslint-disable-next-line
+  return <Main></Main>;
   return (
     <div>
+      <svg>
+        <use xlinkHref="#logo"></use>
+      </svg>
+      <hr></hr>
       {/* <img src={"./logo1.png"} className="App-logo" alt="./logo1.png" /> */}
       <img src={logo1} className="App-logo" alt="logo1" />
-      1
+      <hr></hr>
       <img src={"./logo192.png"} className="App-logo" alt="./logo192.png" />
-      <img src={logo192} className="App-logo" alt="logo192" />2
+      <img src={logo192} className="App-logo" alt="logo192" />
+      <hr></hr>
       {/* <img src={"./logo.svg"} className="App-logo" alt="logo" />2 */}
-      <img src={logo} className="App-logo" alt="logo" />3<Main></Main>
+      {/* <img src={logo} className="App-logo" alt="logo" />3 */}
+      <Main></Main>
     </div>
   );
 

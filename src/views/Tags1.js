@@ -1,13 +1,13 @@
 import React from "react";
-import Nav from "components/Nav";
-import styled from "styled-components";
+// import Nav from "components/Nav";
+// import styled from "styled-components";
+import Layout from "components/Layout";
 
 function Tags() {
   return (
-    <div>
+    <Layout>
       <h2>Tags</h2>
-      <Nav></Nav>
-    </div>
+    </Layout>
   );
 }
 export default Tags;

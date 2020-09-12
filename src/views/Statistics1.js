@@ -1,13 +1,13 @@
 import React from "react";
-import Nav from "components/Nav";
-import styled from "styled-components";
+// import Nav from "components/Nav";
+// import styled from "styled-components";
+import Layout from "components/Layout";
 
 function Statistics() {
   return (
-    <div>
+    <Layout>
       <h2>Statistics</h2>
-      <Nav></Nav>
-    </div>
+    </Layout>
   );
 }
 export default Statistics;

@@ -2,20 +2,36 @@ import React from "react";
 import Nav from "components/Nav";
 import styled from "styled-components";
 
-const LayoutWrapper = styled.div`
-  height: 100vh;
+// const LayoutWrapper = styled.div`
+//   height: 100vh;
+//   display: flex;
+//   main {
+//     flex: 1;
+//   }
+// `;
+
+const MainWrapper = styled.div`
+  border: 2px solid black;
   display: flex;
-  main {
-    flex: 1;
-  }
+  flex-direction: column;
+  height: 100vh;
 `;
 
-function Layout() {
+const SwitchWrapper = styled.div`
+  border: 1px solid green;
+  flex: 1;
+`;
+
+function Layout(props) {
   return (
-    <LayoutWrapper>
-      <main></main>
+    // <LayoutWrapper>
+    //   {props.children}
+    //   <Nav></Nav>
+    // </LayoutWrapper>
+    <MainWrapper>
+      <SwitchWrapper>{props.children}</SwitchWrapper>
       <Nav></Nav>
-    </LayoutWrapper>
+    </MainWrapper>
   );
 }
-export default Money1;
+export default Layout;

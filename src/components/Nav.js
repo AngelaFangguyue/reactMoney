@@ -1,8 +1,23 @@
 //import styled from "styled-components";
 
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 import styled from "styled-components";
+// eslint-disable-next-line
+//import x from "icons/search.svg";
+//import cl"icons/search.svg";
+//console.log("xx:", x);
+//require("icons/tag.svg");
+
+import Icon from "./Icon";
+
+const importAll = (requireContext) =>
+  requireContext.keys().forEach(requireContext);
+try {
+  importAll(require.context("icons", true, /\.svg$/));
+} catch {}
 
 const Navwrapper = styled.nav`
   line-height: 24px;
@@ -15,7 +30,23 @@ const Navwrapper = styled.nav`
     li {
       flex: 1;
       border: 2px solid pink;
-      padding: 10px 0;
+      padding: 5px 0;
+      a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .icon {
+          /* cursor: pointer; */
+          margin-bottom: 4px;
+          width: 24px;
+          height: 24px;
+        }
+        &.selected {
+          color: red;
+        }
+      }
     }
   }
 `;
@@ -25,13 +56,30 @@ function Nav() {
     <Navwrapper>
       <ul>
         <li>
-          <Link to="/tags">标签</Link>
+          {/* <svg className="icon">
+            <use xlinkHref="#tag"></use>
+          </svg> */}
+
+          <NavLink to="/tags" activeClassName="selected">
+            <Icon name="#tag"></Icon>
+            <span>标签</span>
+          </NavLink>
         </li>
         <li>
-          <Link to="/money">记账</Link>
+          {/* <svg className="icon">
+            <use xlinkHref="#search"></use>
+          </svg> */}
+
+          <NavLink to="/money" activeClassName="selected">
+            <Icon name="#search"></Icon>
+            <span>记账</span>
+          </NavLink>
         </li>
         <li>
-          <Link to="/statistics">统计</Link>
+          <NavLink to="/statistics" activeClassName="selected">
+            <Icon name="#tag"></Icon>
+            <span>统计</span>
+          </NavLink>
         </li>
       </ul>
     </Navwrapper>
