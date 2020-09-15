@@ -34,6 +34,17 @@ import Main1 from "views/Main1";
 console.log("app:x", x);
 
 function App() {
+  return (
+    <div>
+      <ul>
+        <li>1</li>
+        <li>11</li>
+        <li>111</li>
+      </ul>
+      <Main1></Main1>
+    </div>
+  );
+
   return <Main1></Main1>;
   // eslint-disable-next-line
   return <Main></Main>;

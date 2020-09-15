@@ -14,7 +14,9 @@ ReactDOM.render(
 
 serviceWorker.unregister();
 // eslint-disable-next-line
-let Promise = require("./views/promise.js");
+//require("./views/Promise3.js");
+let Promise = require("./views/Promise3.js");
+console.log("Promise:", Promise);
 // let promiseTest = new Promise((resolve, reject) => {
 //   setTimeout(function () {
 //     resolve(45);

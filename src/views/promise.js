@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-const { resolvePreset } = require("@babel/core");
+//const { resolvePreset } = require("@babel/core");
 
 function Promise(executor) {
   let self = this;
