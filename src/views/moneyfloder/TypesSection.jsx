@@ -30,10 +30,12 @@ const TypesWrapper = styled.section`
     }
   }
 `;
-function TypesSection() {
+function TypesSection(props) {
+  const types = props.value;
+
   const typesMap = { 支出: "-", 收入: "+" };
   const typesAll = ["支出", "收入"];
-  const [types, setTypes] = useState("-");
+  //const [types, setTypes] = useState("-");
 
   return (
     <TypesWrapper>
@@ -60,9 +62,11 @@ function TypesSection() {
           console.log("ulul");
           console.log(e.target.tagName, e.target.textContent);
           if (e.target.textContent === "支出") {
-            setTypes("-");
+            // setTypes("-");
+            props.onChange({types:"-"});
           } else {
-            setTypes("+");
+            // setTypes("+");
+            props.onChange({types:"+"});
           }
         }}
       >

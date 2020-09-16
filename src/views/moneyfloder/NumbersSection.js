@@ -61,8 +61,9 @@ const NumbersWrapper = styled.section`
   }
 `;
 
-function NumbersSection() {
-  const [output, _setOutput] = useState("0");
+function NumbersSection(props) {
+  const output = props.value;
+  // const [output, _setOutput] = useState("0");
 
   const setOutput = (n) => {
     if (n.length > 16) {
@@ -70,7 +71,8 @@ function NumbersSection() {
     } else if (n.length === 0) {
       n = "0";
     }
-    _setOutput(n);
+    //_setOutput(n);
+    props.onChange({ output: n });
   }; //控制输入的字符长度
   const getOutput = (e) => {
     // console.log("e:", e.target);

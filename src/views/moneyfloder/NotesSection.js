@@ -18,11 +18,13 @@ const NotesWrapper = styled.section`
     }
   }
 `;
-function NotesSection() {
-  const [note, setNote] = useState("");
+function NotesSection(props) {
+  const note = props.value;
+  //const [note, setNote] = useState("");
   const inputRef = useRef();
   const getValue = () => {
-    setNote(inputRef.current.value);
+    // setNote(inputRef.current.value);
+    props.onChange({ note: inputRef.current.value });
   };
 
   return (

@@ -100,8 +100,12 @@ function Money1() {
     tags: ["衣"],
     note: "",
     types: "-",
-    output: 0,
+    output: "0",
   });
+
+  function x(obj) {
+    setSelected({ ...selected, ...obj });
+  }
 
   return (
     <Layout>
@@ -147,7 +151,13 @@ function Money1() {
       // onChange={(obj) => {
       //   setSelected({ ...selected, ...obj });
       // }} */}
-      <NumbersSection>
+      <NumbersSection
+        value={selected.output}
+        onChange={(obj) => {
+          //setSelected({ ...selected, output: output });
+          x(obj);
+        }}
+      >
         {/* <div className="inputNumber">100</div>
         <button>1</button>
         <button>2</button>
@@ -164,19 +174,37 @@ function Money1() {
         <button>0</button>
         <button>.</button> */}
       </NumbersSection>
-      <TypesSection>
+      <TypesSection
+        value={selected.types}
+        onChange={(obj) => {
+          //setSelected({ ...selected, types: types });
+          x(obj);
+        }}
+      >
         {/* <ul>
           <li>支出</li>
           <li>收入</li>
         </ul> */}
       </TypesSection>
-      <NotesSection>
+      <NotesSection
+        value={selected.note}
+        onChange={(obj) => {
+          //setSelected({ ...selected, note: note });
+          x(obj);
+        }}
+      >
         {/* <label>
           <span>备注</span>
           <input type="text" placeholder="请输入备注" />
         </label> */}
       </NotesSection>
-      <TagsSection value={selected.tags} onChange={() => {}}>
+      <TagsSection
+        value={selected.tags}
+        onChange={(obj) => {
+          //setSelected({ ...selected, tags: tags });
+          x(obj);
+        }}
+      >
         {/* <ul>
           <li>衣</li>
           <li>食</li>
@@ -185,6 +213,10 @@ function Money1() {
         </ul>
         <button>新增标签</button> */}
       </TagsSection>
+      {selected.tags.join("")}
+      {selected.note}
+      {selected.types}
+      {selected.output}
     </Layout>
   );
 }

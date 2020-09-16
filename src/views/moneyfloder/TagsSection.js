@@ -48,9 +48,11 @@ function TagsSection(props) {
   };
   const toggleSelected = (tag) => {
     if (selectedTags.indexOf(tag) > -1) {
-      setSelectedTags({ selectTags: selectedTags.filter((i) => i !== tag) });
+      //setSelectedTags({ selectTags: selectedTags.filter((i) => i !== tag) });
+      props.onChange({ tags: selectedTags.filter((i) => i !== tag) });
     } else {
-      setSelectedTags({ selectTags: [...selectedTags, tag] });
+      //setSelectedTags({ selectTags: [...selectedTags, tag] });
+      props.onChange({ tags: [...selectedTags, tag] });
     }
     console.log("2>tags:", tag, selectedTags);
   };
