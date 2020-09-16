@@ -20,6 +20,8 @@ const MainWrapper = styled.div`
 const SwitchWrapper = styled.div`
   border: 1px solid green;
   flex: 1;
+  display: flex;
+  flex-direction: column-reverse;
 `;
 
 function Layout(props) {
