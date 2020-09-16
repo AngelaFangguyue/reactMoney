@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 // import Nav from "components/Nav";
 import styled from "styled-components";
+//import Tags from "views/Tags1";
 const TagsWrapper = styled.section`
   flex: 1%;
   background-color: #fff;
@@ -20,6 +21,9 @@ const TagsWrapper = styled.section`
       border: 1px solid gray;
       margin: 5px 15px 5px 0;
       border-radius: 5px;
+      &.selected {
+        background-color: orange;
+      }
     }
   }
   button {
@@ -29,15 +33,57 @@ const TagsWrapper = styled.section`
   }
 `;
 function TagsSection() {
+  const [tags, setTags] = useState(["衣", "食", "住", "行"]);
+  const [selectedTags, setSelectedTags] = useState(["衣"]);
+
+  const addTags = () => {
+    let newTag = window.prompt("请输入新的标签名");
+    if (newTag) {
+      setTags([...tags, newTag]);
+    }
+  };
+  const toggleSelected = (tag) => {
+    if (selectedTags.indexOf(tag) > -1) {
+      setSelectedTags(selectedTags.filter((i) => i !== tag));
+    } else {
+      setSelectedTags([...selectedTags, tag]);
+    }
+    console.log("2>tags:", tag, selectedTags);
+  };
+  const addStyle = (i) => {
+    return selectedTags.indexOf(i) > -1 ? "selected" : "";
+  };
+
   return (
     <TagsWrapper>
       <ul>
-        <li>衣</li>
+        {/* <li>衣</li>
         <li>食</li>
         <li>住</li>
-        <li>行</li>
+        <li>行</li> */}
+        {tags.map((i) => (
+          <li
+            key={i}
+            onClick={() => {
+              console.log("0>tags:", i, selectedTags);
+              toggleSelected(i);
+              console.log("1>tags:", i, selectedTags);
+            }}
+            //className={selectedTags.indexOf(i) > -1 ? "selected" : ""}
+            className={addStyle(i)}
+          >
+            {i}
+          </li>
+        ))}
       </ul>
-      <button>新增标签</button>
+      <button
+        onClick={() => {
+          addTags();
+          console.log("button", tags);
+        }}
+      >
+        新增标签
+      </button>
     </TagsWrapper>
   );
 }
