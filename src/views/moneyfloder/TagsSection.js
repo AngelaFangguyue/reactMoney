@@ -32,9 +32,13 @@ const TagsWrapper = styled.section`
     /* align-self: center; */
   }
 `;
-function TagsSection() {
+function TagsSection(props) {
+  // console.log("props:", props.value);
   const [tags, setTags] = useState(["衣", "食", "住", "行"]);
-  const [selectedTags, setSelectedTags] = useState(["衣"]);
+  // const [selectedTags, setSelectedTags] = useState(["衣"]);
+  const selectedTags = props.value;
+  // console.log("selectedTags:", selectedTags);
+  //const setSelectedTags = props.onChange;
 
   const addTags = () => {
     let newTag = window.prompt("请输入新的标签名");
@@ -44,9 +48,9 @@ function TagsSection() {
   };
   const toggleSelected = (tag) => {
     if (selectedTags.indexOf(tag) > -1) {
-      setSelectedTags(selectedTags.filter((i) => i !== tag));
+      setSelectedTags({ selectTags: selectedTags.filter((i) => i !== tag) });
     } else {
-      setSelectedTags([...selectedTags, tag]);
+      setSelectedTags({ selectTags: [...selectedTags, tag] });
     }
     console.log("2>tags:", tag, selectedTags);
   };

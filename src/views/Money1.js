@@ -1,4 +1,5 @@
-import React from "react";
+//import React from "react";
+import React, { useState } from "react";
 // import Nav from "components/Nav";
 //import styled from "styled-components";
 import Layout from "components/Layout";
@@ -95,6 +96,13 @@ import TypesSection from "./moneyfloder/TypesSection.jsx";
 // `;
 
 function Money1() {
+  const [selected, setSelected] = useState({
+    tags: ["衣"],
+    note: "",
+    types: "-",
+    output: 0,
+  });
+
   return (
     <Layout>
       {/* <TagsSection>
@@ -135,7 +143,10 @@ function Money1() {
         <button>0</button>
         <button>.</button>
       </NumbersSection> */}
-
+      {/* // value={selected.tags}
+      // onChange={(obj) => {
+      //   setSelected({ ...selected, ...obj });
+      // }} */}
       <NumbersSection>
         {/* <div className="inputNumber">100</div>
         <button>1</button>
@@ -165,7 +176,7 @@ function Money1() {
           <input type="text" placeholder="请输入备注" />
         </label> */}
       </NotesSection>
-      <TagsSection>
+      <TagsSection value={selected.tags} onChange={() => {}}>
         {/* <ul>
           <li>衣</li>
           <li>食</li>

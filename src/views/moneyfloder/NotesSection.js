@@ -44,9 +44,9 @@ function NotesSection() {
           placeholder="请输入备注"
           defultvalue={note}
           onBlur={() => {
-            //getValue();
-            setNote(inputRef.current.value); //直接写setNote也可以
-            console.log("getValue");
+            getValue();
+            //setNote(inputRef.current.value); //直接写setNote也可以
+            //console.log("getValue");
           }}
         />
       </label>
