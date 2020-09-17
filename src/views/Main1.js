@@ -5,6 +5,7 @@ import Money from "./Money1";
 import Statistics from "./Statistics1";
 import Notfound from "./Notfound";
 // import Nav from "components/Nav";
+import { Tag } from "./Tag.jsx";
 import {
   BrowserRouter as Router,
   Switch,
@@ -29,9 +30,12 @@ function Main1() {
   return (
     <Router>
       <Switch>
-        <Redirect from="/" to="/tags" exact></Redirect>
-        <Route path="/tags">
+        <Redirect from="/" to="/tags" exact></Redirect>x
+        <Route exact path="/tags">
           <Tags />
+        </Route>
+        <Route path="/tags/:tagId">
+          <Tag />
         </Route>
         <Route path="/money">
           <Money />

@@ -9,7 +9,7 @@ try {
 function Icon(props) {
   return (
     <svg className="icon">
-      <use xlinkHref={props.name}></use>
+      {props.name && <use xlinkHref={props.name}></use>}
     </svg>
   );
 }

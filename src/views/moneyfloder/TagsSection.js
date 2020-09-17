@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import { createId } from "lib/createId";
+import React from "react";
 // import Nav from "components/Nav";
 import styled from "styled-components";
 //import Tags from "views/Tags1";
+import useTags from "useTags";
+
 const TagsWrapper = styled.section`
-  flex: 1%;
+  flex: 1;
   background-color: #fff;
   border: 1px solid red;
   display: flex;
@@ -34,30 +37,36 @@ const TagsWrapper = styled.section`
 `;
 function TagsSection(props) {
   // console.log("props:", props.value);
-  const [tags, setTags] = useState(["衣", "食", "住", "行"]);
-  // const [selectedTags, setSelectedTags] = useState(["衣"]);
-  const selectedTags = props.value;
-  // console.log("selectedTags:", selectedTags);
+  // const [tags, setTags] = useState(["衣", "食", "住", "行"]);
+  const { tags, setTags } = useTags();
+
+  // const [selectedTagIds, setSelectedTags] = useState(["衣"]);
+  const selectedTagIds = props.value;
+  // console.log("selectedTagIds:", selectedTagIds);
   //const setSelectedTags = props.onChange;
 
   const addTags = () => {
     let newTag = window.prompt("请输入新的标签名");
+
     if (newTag) {
-      setTags([...tags, newTag]);
+      // let obj = { id: Math.random(), name: newTag };
+
+      setTags([...tags, { id: createId(), name: newTag }]);
     }
+    console.log("tags:", tags);
   };
-  const toggleSelected = (tag) => {
-    if (selectedTags.indexOf(tag) > -1) {
-      //setSelectedTags({ selectTags: selectedTags.filter((i) => i !== tag) });
-      props.onChange({ tags: selectedTags.filter((i) => i !== tag) });
+  const toggleSelected = (id) => {
+    if (selectedTagIds.indexOf(id) > -1) {
+      //setSelectedTags({ selectTags: selectedTagIds.filter((i) => i !== tag) });
+      props.onChange({ tagIds: selectedTagIds.filter((i) => i !== id) });
     } else {
-      //setSelectedTags({ selectTags: [...selectedTags, tag] });
-      props.onChange({ tags: [...selectedTags, tag] });
+      //setSelectedTags({ selectTags: [...selectedTagIds, tag] });
+      props.onChange({ tagIds: [...selectedTagIds, id] });
     }
-    console.log("2>tags:", tag, selectedTags);
+    console.log("2>tags:", id, selectedTagIds);
   };
-  const addStyle = (i) => {
-    return selectedTags.indexOf(i) > -1 ? "selected" : "";
+  const addStyle = (id) => {
+    return selectedTagIds.indexOf(id) > -1 ? "selected" : "";
   };
 
   return (
@@ -69,23 +78,23 @@ function TagsSection(props) {
         <li>行</li> */}
         {tags.map((i) => (
           <li
-            key={i}
+            key={i.id}
             onClick={() => {
-              console.log("0>tags:", i, selectedTags);
-              toggleSelected(i);
-              console.log("1>tags:", i, selectedTags);
+              console.log("0>tags:", i.id, i.name, selectedTagIds);
+              toggleSelected(i.id);
+              console.log("1>tags:", i.id, i.name, selectedTagIds);
             }}
-            //className={selectedTags.indexOf(i) > -1 ? "selected" : ""}
-            className={addStyle(i)}
+            //className={selectedTagIds.indexOf(i) > -1 ? "selected" : ""}
+            className={addStyle(i.id)}
           >
-            {i}
+            {i.name}
           </li>
         ))}
       </ul>
       <button
         onClick={() => {
           addTags();
-          console.log("button", tags);
+          //console.log("button", tags);
         }}
       >
         新增标签

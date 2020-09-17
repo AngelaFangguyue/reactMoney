@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 // import Nav from "components/Nav";
 import styled from "styled-components";
 const TypesWrapper = styled.section`
@@ -63,10 +63,10 @@ function TypesSection(props) {
           console.log(e.target.tagName, e.target.textContent);
           if (e.target.textContent === "支出") {
             // setTypes("-");
-            props.onChange({types:"-"});
+            props.onChange({ types: "-" });
           } else {
             // setTypes("+");
-            props.onChange({types:"+"});
+            props.onChange({ types: "+" });
           }
         }}
       >

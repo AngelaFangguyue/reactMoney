@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 // import Nav from "components/Nav";
 import styled from "styled-components";
 const NotesWrapper = styled.section`

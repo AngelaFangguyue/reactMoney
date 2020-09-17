@@ -6,7 +6,7 @@ import Layout from "components/Layout";
 import TagsSection from "./moneyfloder/TagsSection";
 import NumbersSection from "./moneyfloder/NumbersSection";
 import NotesSection from "./moneyfloder/NotesSection";
-import TypesSection from "./moneyfloder/TypesSection.jsx";
+import TypesSection from "./moneyfloder/TypesSection.js";
 
 // const Layout = styled.div`
 //   height: 100vh;
@@ -97,7 +97,7 @@ import TypesSection from "./moneyfloder/TypesSection.jsx";
 
 function Money1() {
   const [selected, setSelected] = useState({
-    tags: ["衣"],
+    tagIds: [1],
     note: "",
     types: "-",
     output: "0",
@@ -151,6 +151,46 @@ function Money1() {
       // onChange={(obj) => {
       //   setSelected({ ...selected, ...obj });
       // }} */}
+
+      <TagsSection
+        value={selected.tagIds}
+        onChange={(obj) => {
+          //setSelected({ ...selected, tags: tags });
+          x(obj);
+        }}
+      >
+        {/* <ul>
+          <li>衣</li>
+          <li>食</li>
+          <li>住</li>
+          <li>行</li>
+        </ul>
+        <button>新增标签</button> */}
+      </TagsSection>
+      <NotesSection
+        value={selected.note}
+        onChange={(obj) => {
+          //setSelected({ ...selected, note: note });
+          x(obj);
+        }}
+      >
+        {/* <label>
+          <span>备注</span>
+          <input type="text" placeholder="请输入备注" />
+        </label> */}
+      </NotesSection>
+      <TypesSection
+        value={selected.types}
+        onChange={(obj) => {
+          //setSelected({ ...selected, types: types });
+          x(obj);
+        }}
+      >
+        {/* <ul>
+          <li>支出</li>
+          <li>收入</li>
+        </ul> */}
+      </TypesSection>
       <NumbersSection
         value={selected.output}
         onChange={(obj) => {
@@ -174,49 +214,6 @@ function Money1() {
         <button>0</button>
         <button>.</button> */}
       </NumbersSection>
-      <TypesSection
-        value={selected.types}
-        onChange={(obj) => {
-          //setSelected({ ...selected, types: types });
-          x(obj);
-        }}
-      >
-        {/* <ul>
-          <li>支出</li>
-          <li>收入</li>
-        </ul> */}
-      </TypesSection>
-      <NotesSection
-        value={selected.note}
-        onChange={(obj) => {
-          //setSelected({ ...selected, note: note });
-          x(obj);
-        }}
-      >
-        {/* <label>
-          <span>备注</span>
-          <input type="text" placeholder="请输入备注" />
-        </label> */}
-      </NotesSection>
-      <TagsSection
-        value={selected.tags}
-        onChange={(obj) => {
-          //setSelected({ ...selected, tags: tags });
-          x(obj);
-        }}
-      >
-        {/* <ul>
-          <li>衣</li>
-          <li>食</li>
-          <li>住</li>
-          <li>行</li>
-        </ul>
-        <button>新增标签</button> */}
-      </TagsSection>
-      {selected.tags.join("")}
-      {selected.note}
-      {selected.types}
-      {selected.output}
     </Layout>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 // import Nav from "components/Nav";
 import styled from "styled-components";
 const NumbersWrapper = styled.section`
