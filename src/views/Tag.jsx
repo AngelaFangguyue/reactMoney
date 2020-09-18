@@ -13,7 +13,7 @@ import Input from "../components/Input.js";
 // const TagWrapper = styled.div`
 //   border: 1px solid red;
 // `;
-const TopBar = styled.div`
+const TopTitle = styled.div`
   padding: 15px 10px;
   border: 1px solid red;
   display: flex;
@@ -32,9 +32,39 @@ const Tag = () => {
   tagId = parseInt(tagId);
 
   // const { tags, setTags, findTag, findTagIndex, updateTag } = useTags();
-  const { findTag, updateTag } = useTags();
+  const { findTag, updateTag, deleteTag } = useTags();
 
   let tag = findTag(tagId);
+
+  let content = (tagParam) => (
+    <div>
+      <InputWrapper>
+        <Input
+          label="标签"
+          ph={tagParam.id}
+          value1={tagParam.name}
+          getValue={(i) => {
+            // console.log("i:", i);
+            // v(i);
+            updateTag(tagId, i);
+          }}
+        ></Input>
+      </InputWrapper>
+      <Center>
+        <Space></Space>
+        <Space></Space>
+        <Space></Space>
+        <Button
+          onClick={() => {
+            console.log("111");
+            deleteTag(tagId);
+          }}
+        >
+          删除标签
+        </Button>
+      </Center>
+    </div>
+  );
 
   // const v = (newTagName) => {
   //   let index = findTagIndex(tagId);
@@ -61,13 +91,61 @@ const Tag = () => {
     //   </div>
     // </TagWrapper>
     <Layout>
-      <TopBar>
+      <TopTitle>
         <Icon name="#left"></Icon>
         <span>编辑标签</span>
         <Icon></Icon>
-      </TopBar>
-      <InputWrapper>
-        {/* tag----{tag.id}--{tag.name} */}
+      </TopTitle>
+
+      {tag ? (
+        content(tag)
+      ) : (
+        <Center>
+          <Space></Space>
+          <Space></Space>
+          <Space></Space>
+          该Tag已被删除或不存在
+        </Center>
+      )}
+      {/* {tag ? (
+        <div>
+          <InputWrapper>
+            <Input
+              label="标签"
+              ph={tag.id}
+              value1={tag.name}
+              getValue={(i) => {
+                // console.log("i:", i);
+                // v(i);
+                updateTag(tagId, i);
+              }}
+            ></Input>
+          </InputWrapper>
+          <Center>
+            <Space></Space>
+            <Space></Space>
+            <Space></Space>
+            <Button
+              onClick={() => {
+                console.log("111");
+                deleteTag(tagId);
+              }}
+            >
+              删除标签
+            </Button>
+          </Center>
+        </div>
+      ) : (
+        <Center>
+          <Space></Space>
+          <Space></Space>
+          <Space></Space>
+          该Tag已被删除或不存在
+        </Center>
+      )} */}
+
+      {/*tag----{tag.id}--{tag.name}*/}
+      {/* <InputWrapper>
         <Input
           label="标签"
           ph={tag.id}
@@ -86,11 +164,12 @@ const Tag = () => {
         <Button
           onClick={() => {
             console.log("111");
+            deleteTag(tagId);
           }}
         >
           删除标签
         </Button>
-      </Center>
+      </Center> */}
     </Layout>
   );
 };

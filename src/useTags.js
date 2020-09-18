@@ -35,8 +35,15 @@ const useTags = () => {
     setTags(updatedTag);
   };
 
+  const deleteTag = (tagId) => {
+    let index = findTagIndex(tagId);
+    let updatedTag = JSON.parse(JSON.stringify(tags));
+    updatedTag.splice(index, 1);
+    console.log("updateTag:", updatedTag);
+    setTags(updatedTag);
+  };
   // return [tags, setTags, findTag];
-  return { tags, setTags, findTag, findTagIndex, updateTag };
+  return { tags, setTags, findTag, findTagIndex, updateTag, deleteTag };
 };
 
 export default useTags;
