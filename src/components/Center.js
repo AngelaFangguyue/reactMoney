@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 const Center = styled.div`
   display: flex;
@@ -8,6 +7,3 @@ const Center = styled.div`
 `;
 
 export default Center;
-const Space = styled.div`
-  margin-top: 16px;
-`;

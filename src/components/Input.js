@@ -17,7 +17,12 @@ const Input = (props) => {
   return (
     <Label>
       <span>{props.label}</span>
-      <input type="text" placeholder={props.ph} />
+      <input
+        type="text"
+        placeholder={props.ph}
+        value={props.value1}
+        onChange={(e) => props.getValue(e.target.value)}
+      />
     </Label>
   );
 };

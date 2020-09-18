@@ -14,28 +14,46 @@ import Input from "../components/Input.js";
 //   border: 1px solid red;
 // `;
 const TopBar = styled.div`
-  padding: 5px 16px;
+  padding: 15px 10px;
   border: 1px solid red;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: white;
+`;
+const InputWrapper = styled.div`
+  margin-top: 8px;
+  padding: 12px 0;
+  background-color: white;
 `;
 
 const Tag = () => {
-  const { tagId } = useParams();
-  // const [tags, setTags, findTag] = useTags();
-  //   console.log(
-  //     "useTags()",
-  //     useTags(),
-  //     "tags:",
-  //     tags,
-  //     "setTags:",
-  //     setTags,
-  //     "findTag:",
-  //     findTag
-  //   );
-  const { findTag } = useTags();
-  const tag = findTag(parseInt(tagId));
+  let { tagId } = useParams();
+  tagId = parseInt(tagId);
+
+  // const { tags, setTags, findTag, findTagIndex, updateTag } = useTags();
+  const { findTag, updateTag } = useTags();
+
+  let tag = findTag(tagId);
+
+  // const v = (newTagName) => {
+  //   let index = findTagIndex(tagId);
+  //   let updatedTag = JSON.parse(JSON.stringify(tags));
+  //   updatedTag.splice(index, 1, { id: tagId, name: newTagName });
+  //   console.log("updatedTag:", updatedTag);
+  //   setTags(updatedTag);
+  //   //tag.name = newTagName;
+  //   console.log(tag.name);
+  //   tag = findTag(parseInt(tagId));
+  // };
+  //updateTag(tagId);
+
+  // const v = (newTagName) => {
+  //   console.log("newTagName:", newTagName);
+  //   console.log("tagId:", tagId);
+  //   updateTag(tagId, newTagName);
+  // };
+
   return (
     // <TagWrapper>
     //   <div>
@@ -48,10 +66,19 @@ const Tag = () => {
         <span>编辑标签</span>
         <Icon></Icon>
       </TopBar>
-      <div>
-        tag----{tag.id}--{tag.name}
-        <Input label="标签" ph={tag.name}></Input>
-      </div>
+      <InputWrapper>
+        {/* tag----{tag.id}--{tag.name} */}
+        <Input
+          label="标签"
+          ph={tag.id}
+          value1={tag.name}
+          getValue={(i) => {
+            // console.log("i:", i);
+            // v(i);
+            updateTag(tagId, i);
+          }}
+        ></Input>
+      </InputWrapper>
       <Center>
         <Space></Space>
         <Space></Space>
