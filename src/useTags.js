@@ -28,19 +28,32 @@ const useTags = () => {
   };
 
   const updateTag = (tagId, newTagName) => {
-    let index = findTagIndex(tagId);
-    let updatedTag = JSON.parse(JSON.stringify(tags));
-    updatedTag.splice(index, 1, { id: tagId, name: newTagName });
-    console.log("updateTag:", updatedTag);
-    setTags(updatedTag);
+    // let index = findTagIndex(tagId);
+    // let updatedTag = JSON.parse(JSON.stringify(tags));
+    // updatedTag.splice(index, 1, { id: tagId, name: newTagName });
+    // console.log("updateTag:", updatedTag);
+    // setTags(updatedTag);
+    setTags(
+      tags.map((i) => {
+        // if(tagId===i.id){
+        //   return { id: tagId, name: newTagName }
+        // }else{
+        //   return i
+        // }
+        return tagId === i.id ? { id: tagId, name: newTagName } : i;
+      })
+    );
+    console.log("update>tags:", tags);
   };
 
   const deleteTag = (tagId) => {
-    let index = findTagIndex(tagId);
-    let updatedTag = JSON.parse(JSON.stringify(tags));
-    updatedTag.splice(index, 1);
-    console.log("updateTag:", updatedTag);
-    setTags(updatedTag);
+    // let index = findTagIndex(tagId);
+    // let updatedTag = JSON.parse(JSON.stringify(tags));
+    // updatedTag.splice(index, 1);
+    // console.log("updateTag:", updatedTag);
+    // setTags(updatedTag);
+    setTags(tags.filter((i) => i.id !== tagId));
+    console.log("delete>tags:", tags);
   };
   // return [tags, setTags, findTag];
   return { tags, setTags, findTag, findTagIndex, updateTag, deleteTag };

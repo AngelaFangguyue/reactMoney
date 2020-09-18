@@ -30,9 +30,11 @@ const InputWrapper = styled.div`
 const Tag = () => {
   let { tagId } = useParams();
   tagId = parseInt(tagId);
+  // console.log("tag>tagId:", tagId);
 
   // const { tags, setTags, findTag, findTagIndex, updateTag } = useTags();
-  const { findTag, updateTag, deleteTag } = useTags();
+  const { tags, findTag, updateTag, deleteTag } = useTags();
+  console.log("tag>tags:", tags);
 
   let tag = findTag(tagId);
 
@@ -56,7 +58,7 @@ const Tag = () => {
         <Space></Space>
         <Button
           onClick={() => {
-            console.log("111");
+            //console.log("111");
             deleteTag(tagId);
           }}
         >

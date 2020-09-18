@@ -48,7 +48,7 @@ const UlWrapper = styled.ul`
 
 function Tags() {
   const { tags } = useTags();
-  //console.log("setTags:", setTags);
+  // console.log("setTags:", tags);
 
   return (
     <Layout>
