@@ -1,6 +1,6 @@
 import Layout from "components/Layout.js";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 // import Nav from "components/Nav";
 import styled from "styled-components";
 import useTags from "../useTags.js";
@@ -85,6 +85,11 @@ const Tag = () => {
   //   console.log("tagId:", tagId);
   //   updateTag(tagId, newTagName);
   // };
+  const history = useHistory();
+  const goBack = () => {
+    history.goBack();
+    console.log("goBack");
+  };
 
   return (
     // <TagWrapper>
@@ -94,7 +99,7 @@ const Tag = () => {
     // </TagWrapper>
     <Layout>
       <TopTitle>
-        <Icon name="#left"></Icon>
+        <Icon name="#left" onClick={goBack}></Icon>
         <span>编辑标签</span>
         <Icon></Icon>
       </TopTitle>

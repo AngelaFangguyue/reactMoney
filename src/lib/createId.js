@@ -1,6 +1,8 @@
-let id = 0;
+let id = parseInt(window.localStorage.getItem("idMax") || "0");
 const createId = () => {
   id += 1;
+  console.log("id:", id);
+  window.localStorage.setItem("idMax", id.toString());
   return id;
 };
 
@@ -10,6 +12,8 @@ class createId1 {
     //value += 1;
     id += 1;
     this.id = id;
+    window.localStorage.setItem("idMax", id.toString());
+    console.log("id:", id);
   }
   addten() {
     this.id += 100;

@@ -1,4 +1,4 @@
-import { createId } from "lib/createId";
+//import { createId } from "lib/createId";
 import React from "react";
 // import Nav from "components/Nav";
 import styled from "styled-components";
@@ -38,23 +38,23 @@ const TagsWrapper = styled.section`
 function TagsSection(props) {
   // console.log("props:", props.value);
   // const [tags, setTags] = useState(["衣", "食", "住", "行"]);
-  const { tags, setTags } = useTags();
+  const { tags, addTag } = useTags();
 
   // const [selectedTagIds, setSelectedTags] = useState(["衣"]);
   const selectedTagIds = props.value;
   // console.log("selectedTagIds:", selectedTagIds);
   //const setSelectedTags = props.onChange;
 
-  const addTags = () => {
-    let newTag = window.prompt("请输入新的标签名");
+  // const addTags = () => {
+  //   let newTag = window.prompt("请输入新的标签名");
 
-    if (newTag) {
-      // let obj = { id: Math.random(), name: newTag };
+  //   if (newTag) {
+  //     // let obj = { id: Math.random(), name: newTag };
 
-      setTags([...tags, { id: createId(), name: newTag }]);
-    }
-    console.log("tags:", tags);
-  };
+  //     setTags([...tags, { id: createId(), name: newTag }]);
+  //   }
+  //   console.log("tags:", tags);
+  // };
   const toggleSelected = (id) => {
     if (selectedTagIds.indexOf(id) > -1) {
       //setSelectedTags({ selectTags: selectedTagIds.filter((i) => i !== tag) });
@@ -92,10 +92,11 @@ function TagsSection(props) {
         ))}
       </ul>
       <button
-        onClick={() => {
-          addTags();
-          //console.log("button", tags);
-        }}
+        // onClick={() => {
+        //   addTag();
+        //   //console.log("button", tags);
+        // }}
+        onClick={addTag}
       >
         新增标签
       </button>

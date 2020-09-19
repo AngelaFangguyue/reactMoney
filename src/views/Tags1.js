@@ -47,8 +47,9 @@ const UlWrapper = styled.ul`
 // `;
 
 function Tags() {
-  const { tags } = useTags();
-  // console.log("setTags:", tags);
+  console.log("Tags1:");
+  const { tags, addTag } = useTags();
+  console.log("setTags:", tags);
 
   return (
     <Layout>
@@ -59,7 +60,9 @@ function Tags() {
           return (
             <li key={i.id}>
               <Link to={"/tags/" + i.id}>
-                <span className="oneLine">{i.name}</span>
+                <span className="oneLine">
+                  {i.id}:{i.name}
+                </span>
                 <Icon name="#right" className="rightIcon"></Icon>
               </Link>
             </li>
@@ -70,7 +73,7 @@ function Tags() {
       <Center>
         <Space></Space>
         <Space></Space>
-        <Button>新加标签</Button>
+        <Button onClick={addTag}>新加标签</Button>
       </Center>
     </Layout>
   );

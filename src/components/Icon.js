@@ -8,7 +8,7 @@ try {
 
 function Icon(props) {
   return (
-    <svg className="icon">
+    <svg className="icon" onClick={props.onClick}>
       {props.name && <use xlinkHref={props.name}></use>}
     </svg>
   );

@@ -4,6 +4,7 @@ import "./index.scss";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 //import "./views/promise2.js";
+console.log("入口文件index.js");
 
 ReactDOM.render(
   <React.StrictMode>
