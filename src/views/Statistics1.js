@@ -1,10 +1,22 @@
 import React, { useState } from "react";
 // import Nav from "components/Nav";
-// import styled from "styled-components";
+import styled from "styled-components";
 import Layout from "components/Layout";
 import TypesSection from "views/moneyfloder/TypesSection";
 import useRecords from "hooks/useRecords";
 import useTags from "useTags";
+
+const Item = styled.div`
+  padding: 16px 8px;
+  border: 1px solid green;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  div:nth-child(2) {
+    margin-right: auto;
+    margin-left: 16px;
+  }
+`;
 
 function Statistics() {
   //console.log("statistics");
@@ -36,13 +48,14 @@ function Statistics() {
   hashd = Object.entries(hashd);
   // const obj = { foo: [1, 2, 3], baz: 42 };
   // console.log(Object.entries(obj)); // [ ['foo', 'bar'], ['baz', 42] ]
+  console.log("hashd:", hashd);
 
-  // hashd.sort((a, b) => {
-  //   if (a[0] === b[0]) return 0;
-  //   if (a[0] > b[0]) return 1;
-  //   if (a[0] > b[0]) return -1;
-  // });
-  // console.log("hashd:", hashd);
+  hashd.sort((a, b) => {
+    if (a[0] === b[0]) return 0;
+    if (a[0] > b[0]) return 1;
+    if (a[0] > b[0]) return -1;
+  });
+  console.log("hashd:", hashd);
 
   return (
     <Layout>
@@ -55,13 +68,27 @@ function Statistics() {
         }}
       ></TypesSection>
       <div>
-        {selectedRecords.map((r) => {
+        {hashd.map((i) => {
           return (
-            <div key={r.created}>
-              {r.tagIds.map((id) => {
-                return <span key={id}>{findTagName(id)}</span>;
-              })}
-              **{r.note}**{r.output}
+            <div>
+              <h3>{i[0]}</h3>
+              <div>
+                {i[1].map((r) => {
+                  return (
+                    <Item key={r.created}>
+                      <div>
+                        {r.tagIds.map((id) => {
+                          return <span key={id}>{findTagName(id)}</span>;
+                        })}
+                      </div>
+
+                      <div>{r.note}</div>
+                      <div>{r.output}</div>
+                      <div>{r.created}</div>
+                    </Item>
+                  );
+                })}
+              </div>
             </div>
           );
         })}
