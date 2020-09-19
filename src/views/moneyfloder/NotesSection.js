@@ -1,6 +1,8 @@
-import React, { useRef } from "react";
+import React from "react";
 // import Nav from "components/Nav";
+import Input from "components/Input";
 import styled from "styled-components";
+
 const NotesWrapper = styled.section`
   border: 1px solid yellow;
   padding: 10px 0 10px 10px;
@@ -20,27 +22,40 @@ const NotesWrapper = styled.section`
 `;
 function NotesSection(props) {
   const note = props.value;
+  //console.log("note:", note);
   //const [note, setNote] = useState("");
-  const inputRef = useRef();
-  const getValue = () => {
+  //const inputRef = useRef();
+  const getValue = (e) => {
     // setNote(inputRef.current.value);
-    props.onChange({ note: inputRef.current.value });
+    props.onChange({ note: e });
   };
 
   return (
     <NotesWrapper>
-      <label>
+      <Input
+        label1="备注"
+        type1="text"
+        ph="请输入备注"
+        value1={note}
+        onChange1={(e) => {
+          //setNote(e.target.value);
+          // props.onChange({ note: e.target.value });
+          getValue(e);
+        }}
+      ></Input>
+      {/* <label>
         {note}
         <span>备注</span>
-        {/* <input
+        <input
           type="text"
           placeholder="请输入备注"
           value={note}
           onChange={(e) => {
-            setNote(e.target.value);
+            //setNote(e.target.value);
+            props.onChange({ note: e.target.value });
           }}
-        /> */}
-        <input
+        />
+        {/* <input
           ref={inputRef}
           type="text"
           placeholder="请输入备注"
@@ -50,8 +65,8 @@ function NotesSection(props) {
             //setNote(inputRef.current.value); //直接写setNote也可以
             //console.log("getValue");
           }}
-        />
-      </label>
+        /> */}
+      {/* </label> */}
     </NotesWrapper>
   );
 }

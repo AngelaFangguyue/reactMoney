@@ -41,7 +41,7 @@ function TagsSection(props) {
   const { tags, addTag } = useTags();
 
   // const [selectedTagIds, setSelectedTags] = useState(["衣"]);
-  const selectedTagIds = props.value;
+  const selectedTagIds = [...props.value];
   // console.log("selectedTagIds:", selectedTagIds);
   //const setSelectedTags = props.onChange;
 
@@ -63,7 +63,7 @@ function TagsSection(props) {
       //setSelectedTags({ selectTags: [...selectedTagIds, tag] });
       props.onChange({ tagIds: [...selectedTagIds, id] });
     }
-    console.log("2>tags:", id, selectedTagIds);
+    // console.log("2>tags:", id, selectedTagIds);
   };
   const addStyle = (id) => {
     return selectedTagIds.indexOf(id) > -1 ? "selected" : "";
@@ -80,7 +80,7 @@ function TagsSection(props) {
           <li
             key={i.id}
             onClick={() => {
-              console.log("0>tags:", i.id, i.name, selectedTagIds);
+              // console.log("0>tags:", i.id, i.name, selectedTagIds);
               toggleSelected(i.id);
               console.log("1>tags:", i.id, i.name, selectedTagIds);
             }}

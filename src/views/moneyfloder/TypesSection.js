@@ -59,8 +59,8 @@ function TypesSection(props) {
       </ul> */}
       <ul
         onClick={(e) => {
-          console.log("ulul");
-          console.log(e.target.tagName, e.target.textContent);
+          // console.log("ulul");
+          // console.log(e.target.tagName, e.target.textContent);
           if (e.target.textContent === "支出") {
             // setTypes("-");
             props.onChange({ types: "-" });

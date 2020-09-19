@@ -13,7 +13,7 @@ import { createId } from "./lib/createId";
 //console.log("进入useTags文件");
 
 const useTags = () => {
-  console.log("进入useTags文件里的useTags函数了");
+  //console.log("进入useTags文件里的useTags函数了");
 
   //const [tags, setTags] = useState(defaultTags);
   const [tags, setTags] = useState([]);
@@ -36,7 +36,7 @@ const useTags = () => {
     setTags(localTags);
 
     //console.log("useEffect空22", tags);
-    console.log("useEffect空33", localTags);
+    //console.log("useEffect空33", localTags);
   }, []);
 
   // let count = useRef(0);
@@ -57,7 +57,7 @@ const useTags = () => {
   // }, [tags]);
   useUpdate(() => {
     window.localStorage.setItem("tags", JSON.stringify(tags));
-    console.log("window.localStorage:", JSON.stringify(tags));
+    //console.log("window.localStorage:", JSON.stringify(tags));
   }, tags);
   // useUpdate(() => {
   //   window.localStorage.setItem("tags", JSON.stringify(tags));
@@ -84,6 +84,15 @@ const useTags = () => {
 
   const findTag = (id) => {
     return tags.filter((i) => i.id === id)[0];
+  };
+
+  const findTagName = (tagId) => {
+    let tag = findTag(tagId);
+    if (tag) {
+      return tag.name;
+    } else {
+      return "无标签";
+    }
   };
 
   const findTagIndex = (tagId) => {
@@ -135,7 +144,16 @@ const useTags = () => {
     //console.log("tags:", tags);
   };
 
-  return { tags, setTags, findTag, findTagIndex, updateTag, deleteTag, addTag };
+  return {
+    tags,
+    setTags,
+    findTag,
+    findTagIndex,
+    findTagName,
+    updateTag,
+    deleteTag,
+    addTag,
+  };
 };
 
 export default useTags;

@@ -16,12 +16,12 @@ const Label = styled.label`
 const Input = (props) => {
   return (
     <Label>
-      <span>{props.label}</span>
+      <span>{props.label1}</span>
       <input
         type="text"
         placeholder={props.ph}
         value={props.value1}
-        onChange={(e) => props.getValue(e.target.value)}
+        onChange={(e) => props.onChange1(e.target.value)}
       />
     </Label>
   );

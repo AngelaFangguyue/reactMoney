@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 // import Nav from "components/Nav";
 import styled from "styled-components";
+
 const NumbersWrapper = styled.section`
-  $bg: #f9f9f9;
+  /* //$bg: #f9f9f9; */
   div {
     padding: 16px 5px 16px 12px;
     background-color: white;
@@ -62,8 +63,10 @@ const NumbersWrapper = styled.section`
 `;
 
 function NumbersSection(props) {
-  const output = props.value;
-  // const [output, _setOutput] = useState("0");
+  //const output = props.value;
+  const [output, _setOutput] = useState(props.value.toString());
+
+  //  const [output, _setOutput] = useState("0");
 
   const setOutput = (n) => {
     if (n.length > 16) {
@@ -71,9 +74,10 @@ function NumbersSection(props) {
     } else if (n.length === 0) {
       n = "0";
     }
-    //_setOutput(n);
-    props.onChange({ output: n });
+    _setOutput(n);
+    props.onChange({ output: parseFloat(n) });
   }; //控制输入的字符长度
+
   const getOutput = (e) => {
     // console.log("e:", e.target);
     // console.log("e:", e.target.tagName);
@@ -114,13 +118,15 @@ function NumbersSection(props) {
         break;
       case "OK":
         console.log("ok");
+        props.onOk();
         break;
       default:
-        return;
+        break;
     }
   };
 
   return (
+    // <div>111</div>
     <NumbersWrapper
       onClick={(e) => {
         getOutput(e);

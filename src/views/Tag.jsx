@@ -42,11 +42,11 @@ const Tag = () => {
     <div>
       <InputWrapper>
         <Input
-          label="标签"
-          ph={tagParam.id}
+          label1="标签"
+          ph1={tagParam.id}
           value1={tagParam.name}
-          getValue={(i) => {
-            // console.log("i:", i);
+          onChange1={(i) => {
+            console.log("i:", i);
             // v(i);
             updateTag(tagId, i);
           }}
