@@ -5,6 +5,8 @@ import Layout from "components/Layout";
 import TypesSection from "views/moneyfloder/TypesSection";
 import useRecords from "hooks/useRecords";
 import useTags from "useTags";
+import day from "dayjs";
+//console.log("day:", day);
 
 const Item = styled.div`
   padding: 16px 8px;
@@ -15,6 +17,10 @@ const Item = styled.div`
   div:nth-child(2) {
     margin-right: auto;
     margin-left: 16px;
+  }
+  div:nth-child(4) {
+    margin-left: auto;
+    /* margin-left: 16px; */
   }
 `;
 
@@ -36,6 +42,8 @@ function Statistics() {
   let hashd = selectedRecords.reduce((hash, item) => {
     //console.log("hash:", hash);
     let string = item.created.slice(0, 10);
+    // let string1 = day(string).format("YYYY年MM月DD日");
+    // console.log("string1:", string1);
     if (!hash[string]) {
       hash[string] = [];
     }
@@ -51,9 +59,13 @@ function Statistics() {
   console.log("hashd:", hashd);
 
   hashd.sort((a, b) => {
-    if (a[0] === b[0]) return 0;
-    if (a[0] > b[0]) return 1;
-    if (a[0] > b[0]) return -1;
+    if (a[0] === b[0]) {
+      return 0;
+    } else if (a[0] > b[0]) {
+      return -1;
+    } else {
+      return 1;
+    }
   });
   console.log("hashd:", hashd);
 
@@ -71,7 +83,7 @@ function Statistics() {
         {hashd.map((i) => {
           return (
             <div>
-              <h3>{i[0]}</h3>
+              <h3>{day(i[0]).format("YYYY年MM月DD日")}</h3>
               <div>
                 {i[1].map((r) => {
                   return (
@@ -84,7 +96,7 @@ function Statistics() {
 
                       <div>{r.note}</div>
                       <div>{r.output}</div>
-                      <div>{r.created}</div>
+                      {/* <div>{r.created}</div> */}
                     </Item>
                   );
                 })}
