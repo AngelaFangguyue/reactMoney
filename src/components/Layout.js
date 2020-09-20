@@ -24,6 +24,7 @@ const SwitchWrapper = styled.div`
   flex-direction: column;
   /* align-items: center; */
   /* justify-content: center; */
+  overflow: auto;
 `;
 
 function Layout(props) {

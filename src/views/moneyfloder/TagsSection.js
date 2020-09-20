@@ -14,6 +14,7 @@ const TagsWrapper = styled.section`
   align-items: flex-start;
   justify-content: space-between;
   padding: 10px 10px 20px 10px;
+  overflow: auto;
   ul {
     display: flex;
     padding: 5px 5px 5px 0;

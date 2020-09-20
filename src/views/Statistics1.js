@@ -71,7 +71,7 @@ function Statistics() {
 
   return (
     <Layout>
-      <h2>Statistics</h2>
+      {/* <div> */}
       <TypesSection
         value={q}
         onChange={(obj) => {
@@ -105,6 +105,7 @@ function Statistics() {
           );
         })}
       </div>
+      {/* </div> */}
     </Layout>
   );
 }
